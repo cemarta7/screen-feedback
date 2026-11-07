@@ -1,0 +1,11 @@
+providers:
+  - ScreenFeedback\FeedbackServiceProvider
+  - ScreenFeedback\Tests\BrowserServiceProvider
+env:
+  APP_NAME: "Feedback Demo"
+  APP_ENV: testing
+  APP_DEBUG: true
+  APP_KEY: base64:MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=
+  CACHE_STORE: array
+  SESSION_DRIVER: cookie
+  QUEUE_CONNECTION: sync

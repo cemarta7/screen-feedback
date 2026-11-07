@@ -1,0 +1,43 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - php: '8.3'
+            laravel: '^12.0'
+            testbench: '^10.0'
+            livewire: '^3.6'
+          - php: '8.4'
+            laravel: '^13.0'
+            testbench: '^11.0'
+            livewire: '^4.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '${{ matrix.php }}'
+          extensions: mbstring, dom, fileinfo, sqlite3, pdo_sqlite
+      - run: composer update --no-interaction --prefer-dist --with 'laravel/framework:${{ matrix.laravel }}' --with 'orchestra/testbench:${{ matrix.testbench }}' --with 'livewire/livewire:${{ matrix.livewire }}' -W
+      - run: composer test
+      - run: composer analyse
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, fileinfo, sqlite3, pdo_sqlite
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: composer install --no-interaction --prefer-dist
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser

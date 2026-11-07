@@ -1,0 +1,36 @@
+{
+  "name": "@cemarta7/screen-feedback",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "description": "Portable screenshot feedback for Vue and Laravel Livewire",
+  "type": "module",
+  "files": ["dist", "frontend"],
+  "exports": {
+    ".": { "types": "./dist/core.d.ts", "import": "./dist/core.js" },
+    "./vue": { "types": "./dist/vue.d.ts", "import": "./dist/vue.js" },
+    "./livewire": { "types": "./dist/livewire.d.ts", "import": "./dist/livewire.js" },
+    "./style.css": "./frontend/style.css"
+  },
+  "sideEffects": ["**/*.css", "./dist/livewire.js"],
+  "scripts": {
+    "build": "vite build && vue-tsc -p tsconfig.build.json",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "prepack": "npm run build"
+  },
+  "dependencies": { "html-to-image": "^1.11.13" },
+  "peerDependencies": { "vue": "^3.5.0" },
+  "peerDependenciesMeta": { "vue": { "optional": true } },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^22.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^5.1.0",
+    "vue": "^3.5.0",
+    "vue-tsc": "^3.0.0"
+  }
+}

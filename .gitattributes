@@ -1,0 +1,10 @@
+/tests export-ignore
+/.github export-ignore
+/examples export-ignore
+/testbench.yaml export-ignore
+/phpunit.xml export-ignore
+/phpstan.neon export-ignore
+/playwright.config.ts export-ignore
+/vitest.config.ts export-ignore
+/composer.lock export-ignore
+/package-lock.json export-ignore

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "declaration": true, "emitDeclarationOnly": true, "outDir": "dist", "rootDir": "frontend" },
+  "include": ["frontend/**/*.ts", "frontend/**/*.vue"]
+}

@@ -1,0 +1,27 @@
+{
+    "name": "cemarta7/screen-feedback",
+    "description": "Screenshot feedback and queued email for Laravel with Vue and optional Livewire widgets.",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.3",
+        "laravel/framework": "^12.0 || ^13.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "livewire/livewire": "^3.6 || ^4.0",
+        "orchestra/testbench": "^10.0 || ^11.0",
+        "pestphp/pest": "^4.0 || ^5.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "suggest": { "livewire/livewire": "Install ^3.6 or ^4.0 for the Livewire widget." },
+    "autoload": { "psr-4": { "ScreenFeedback\\": "src/" } },
+    "autoload-dev": { "psr-4": { "ScreenFeedback\\Tests\\": "tests/" } },
+    "extra": { "laravel": { "providers": ["ScreenFeedback\\FeedbackServiceProvider"] } },
+    "config": { "allow-plugins": { "pestphp/pest-plugin": true }, "sort-packages": true },
+    "scripts": {
+        "test": "pest --parallel",
+        "analyse": "phpstan analyse",
+        "format": "pint"
+    }
+}
