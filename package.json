@@ -1,6 +1,6 @@
 {
   "name": "@cemarta7/screen-feedback",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "UNLICENSED",
   "description": "Portable screenshot feedback for Vue and Laravel Livewire",
   "type": "module",
@@ -17,7 +17,7 @@
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest run",
     "test:browser": "playwright test",
-    "prepack": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": { "html-to-image": "^1.11.13" },
   "peerDependencies": { "vue": "^3.5.0" },

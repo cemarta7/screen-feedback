@@ -6,7 +6,19 @@ Includes a floating feedback button, comments, optional PNG screenshot/preview/r
 
 The screenshot renders the webpage DOM, not the operating system or other browser tabs. Capture uses `html-to-image`, which handles embedded assets and computed styles without temporarily modifying the live page.
 
-## Local installation (packages are not published yet)
+## GitHub installation
+
+After the `v0.1.1` tag is pushed:
+
+```sh
+composer config repositories.screen-feedback vcs git@github.com:cemarta7/screen-feedback.git
+composer require cemarta7/screen-feedback:0.1.1
+npm install "git+ssh://git@github.com/cemarta7/screen-feedback.git#v0.1.1"
+```
+
+The npm package is named `@cemarta7/screen-feedback`. Its `prepare` hook builds the JavaScript and TypeScript declarations during Git installation. Keep npm lifecycle scripts enabled and provide GitHub SSH access in environments installing this dependency. The `v0.1.0` Git tag lacks this hook and installs without the required `dist/` files; use `v0.1.1` for Git-based npm installs.
+
+## Local installation
 
 In this repository:
 
@@ -21,7 +33,7 @@ In a sibling Laravel application, add the Composer path repository, then install
 ```sh
 composer config repositories.screen-feedback '{"type":"path","url":"../screen-feedback","options":{"versions":{"cemarta7/screen-feedback":"dev-main"}}}'
 composer require cemarta7/screen-feedback:dev-main
-npm install ../screen-feedback/cemarta7-screen-feedback-0.1.0.tgz
+npm install ../screen-feedback/cemarta7-screen-feedback-0.1.1.tgz
 php artisan vendor:publish --tag=screen-feedback-config
 ```
 
